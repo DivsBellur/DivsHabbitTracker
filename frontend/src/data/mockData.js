@@ -18,6 +18,14 @@ export const currentUser = {
 };
 
 /**
+ * Habit categories, and the display order the Dashboard groups them in.
+ * Kept to exactly two buckets — Health (physical) and Mindfulness
+ * (mental/emotional) — so every habit sorts cleanly into one of the two
+ * Dashboard columns.
+ */
+export const HABIT_CATEGORIES = ['Health', 'Mindfulness'];
+
+/**
  * Starting habit list.
  * `difficulty` drives base XP per FR-1.1 (see utils/gamification.js).
  * `currentStreak` / `longestStreak` seed the streak system (FR-3.1, FR-3.5).
@@ -36,7 +44,7 @@ export const initialHabits = [
   {
     id: 'h2',
     name: 'Read for 20 minutes',
-    category: 'Learning',
+    category: 'Mindfulness',
     difficulty: 'easy',
     icon: '📚',
     currentStreak: 0,
@@ -46,7 +54,7 @@ export const initialHabits = [
   {
     id: 'h3',
     name: '30-minute workout',
-    category: 'Fitness',
+    category: 'Health',
     difficulty: 'medium',
     icon: '🏋️',
     currentStreak: 2,
@@ -74,13 +82,13 @@ export const initialHabits = [
     completedToday: false,
   },
   {
-    id: 'h6',
-    name: 'Practice guitar',
-    category: 'Creativity',
+    id: 'h7',
+    name: 'Yoga practice',
+    category: 'Mindfulness',
     difficulty: 'medium',
-    icon: '🎸',
-    currentStreak: 6,
-    longestStreak: 18,
+    icon: '🕉️',
+    currentStreak: 3,
+    longestStreak: 10,
     completedToday: false,
   },
 ];
@@ -168,21 +176,12 @@ export const badgeDefinitions = [
   // Variety badges
   {
     id: 'b7',
-    name: 'Renaissance Person',
-    description: 'Keep active streaks across 3 different habit categories.',
+    name: 'Well-Rounded',
+    description: 'Keep active streaks across both Health and Mindfulness categories.',
     category: 'Variety',
     tier: 'silver',
-    icon: '🎨',
-    criteria: { type: 'categories', count: 3 },
-  },
-  {
-    id: 'b8',
-    name: 'Well-Rounded',
-    description: 'Keep active streaks across 5 different habit categories.',
-    category: 'Variety',
-    tier: 'gold',
     icon: '🌈',
-    criteria: { type: 'categories', count: 5 },
+    criteria: { type: 'categories', count: 2 },
   },
   // Special badges
   {

@@ -14,9 +14,9 @@ frontend does not call it.
 
 | Area | What's implemented |
 |---|---|
-| **Dashboard** | Today's habit list, per-habit streaks, daily completion progress, Perfect Day banner |
+| **Dashboard** | Habits grouped into Health / Mindfulness columns (side by side), per-habit streaks, daily completion progress, Perfect Day banner |
 | **XP & Levels** | Base XP by difficulty, streak multiplier, Perfect Day bonus, level-up celebration (spec §4.1) |
-| **Achievements** | 11 badges across Streak / Completion / Variety / Special categories, locked/unlocked gallery (spec §4.2) |
+| **Achievements** | 10 badges across Streak / Completion / Variety / Special categories, locked/unlocked gallery (spec §4.2) |
 | **Streaks** | Per-habit current & longest streak, flame icon that scales with streak length, milestone toasts (spec §4.3) |
 | **Leaderboard** | Weekly / All-Time toggle over mock ranked users, current user highlighted (spec §4.5) |
 | **Responsive design** | Mobile-first layout, breakpoints at 640px/560px/480px, 44×44px minimum touch targets |

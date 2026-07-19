@@ -60,8 +60,28 @@
   font-size: 0.9rem;
 }
 
-.dashboard__list {
+/* Two category columns side by side so every habit fits on one screen,
+   stacking to a single column once there isn't room for both. */
+.dashboard__categories {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.dashboard__category-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.dashboard__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
 }

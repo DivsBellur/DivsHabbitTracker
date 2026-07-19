@@ -1,8 +1,13 @@
 import HabitCard from './HabitCard.jsx';
+import { HABIT_CATEGORIES } from '../data/mockData.js';
 import './Dashboard.css';
 
+const CATEGORY_ICON = { Health: '💪', Mindfulness: '🧘' };
+
 /**
- * Main "today" view: daily progress summary plus the habit list.
+ * Main "today" view: daily progress summary, plus the habit list split into
+ * Health / Mindfulness columns (side by side on wide screens) so the full
+ * set of habits is visible without scrolling.
  *
  * @param {{
  *   habits: Array<object>,
@@ -49,11 +54,25 @@ export default function Dashboard({ habits, habitsCompletedToday, onComplete, on
         )}
       </div>
 
-      <ul className="dashboard__list">
-        {habits.map((habit) => (
-          <HabitCard key={habit.id} habit={habit} onComplete={onComplete} />
-        ))}
-      </ul>
+      <div className="dashboard__categories">
+        {HABIT_CATEGORIES.map((category) => {
+          const categoryHabits = habits.filter((habit) => habit.category === category);
+          if (categoryHabits.length === 0) return null;
+
+          return (
+            <div key={category} className="dashboard__category">
+              <h3 className="dashboard__category-title">
+                <span aria-hidden="true">{CATEGORY_ICON[category] ?? '•'}</span> {category} Habits
+              </h3>
+              <ul className="dashboard__list">
+                {categoryHabits.map((habit) => (
+                  <HabitCard key={habit.id} habit={habit} onComplete={onComplete} />
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
     </section>
   );
 }
