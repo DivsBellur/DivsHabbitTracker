@@ -1,0 +1,43 @@
+.streak-flame {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.streak-flame__icon {
+  font-size: 1.1rem;
+  filter: grayscale(1) opacity(0.5);
+}
+
+.streak-flame--small .streak-flame__icon {
+  filter: grayscale(0.3) opacity(0.85);
+}
+
+.streak-flame--strong .streak-flame__icon {
+  filter: none;
+  text-shadow: 0 0 8px rgba(255, 140, 60, 0.6);
+}
+
+.streak-flame--blazing .streak-flame__icon {
+  filter: none;
+  text-shadow: 0 0 12px rgba(255, 100, 40, 0.9);
+  animation: flame-pulse 1.6s ease-in-out infinite;
+}
+
+.streak-flame--strong .streak-flame__count,
+.streak-flame--blazing .streak-flame__count {
+  color: var(--text-primary);
+}
+
+@keyframes flame-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}

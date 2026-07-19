@@ -1,0 +1,94 @@
+.badge-card {
+  padding: var(--space-5) var(--space-4);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.badge-card__icon-wrap {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  margin-bottom: var(--space-2);
+}
+
+.badge-card__icon {
+  font-size: 2rem;
+}
+
+.badge-card.is-locked .badge-card__icon {
+  filter: grayscale(1) brightness(0.55);
+}
+
+.badge-card__lock {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  font-size: 0.9rem;
+  background: var(--bg-elevated);
+  border-radius: 50%;
+  padding: 3px;
+  line-height: 1;
+}
+
+.badge-card__tier {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.badge-card--bronze.is-unlocked .badge-card__tier {
+  color: var(--tier-bronze);
+}
+
+.badge-card--silver.is-unlocked .badge-card__tier {
+  color: var(--tier-silver);
+}
+
+.badge-card--gold.is-unlocked .badge-card__tier {
+  color: var(--tier-gold);
+}
+
+.badge-card--legendary.is-unlocked .badge-card__tier {
+  color: var(--tier-legendary);
+}
+
+.badge-card__name {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.badge-card__description {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.badge-card.is-locked .badge-card__name,
+.badge-card.is-locked .badge-card__description {
+  color: var(--text-muted);
+}
+
+.badge-card--legendary.is-unlocked {
+  border-color: var(--tier-legendary);
+  animation: legendary-glow 2.4s ease-in-out infinite;
+}
+
+@keyframes legendary-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 18px rgba(179, 136, 255, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 32px rgba(179, 136, 255, 0.55);
+  }
+}

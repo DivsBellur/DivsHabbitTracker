@@ -1,0 +1,28 @@
+.achievements {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.achievements__summary {
+  padding: var(--space-5);
+}
+
+.achievements__summary-sub {
+  color: var(--text-secondary);
+  margin-top: var(--space-1);
+}
+
+.achievements__group-title {
+  margin-bottom: var(--space-3);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.achievements__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-4);
+}
