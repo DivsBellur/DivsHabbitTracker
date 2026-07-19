@@ -102,15 +102,27 @@ npm run preview   # serve the production build locally
 
 ## Deployment (Vercel)
 
-This app is a static Vite build — Vercel needs no server runtime.
-`vercel.json` in this folder configures the build.
+This app is a static Vite build — Vercel needs no server runtime. There are
+**two** `vercel.json` files, and only one is read per deployment:
 
-### Option A — Vercel CLI
+- `/vercel.json` (repo root) — used when the Vercel project's **Root
+  Directory** is left as the repo root (the default). It `cd`s into
+  `frontend/` to install and build, so it works with **no dashboard
+  configuration**.
+- `/frontend/vercel.json` — used only if you explicitly set the project's
+  Root Directory to `frontend`.
+
+If you deploy by connecting the repo with default settings and hit
+`404: NOT_FOUND`, it means Vercel built from the repo root and found nothing
+to serve there — the root `vercel.json` above should already prevent that,
+but if you're still seeing it, check whether Root Directory was set to
+something unexpected (e.g. `backend`) in **Project Settings → General**.
+
+### Option A — Vercel CLI (from the repo root)
 
 ```bash
-cd frontend
 npm install -g vercel   # if you don't already have it
-vercel                  # first run: link/create the project, deploy a preview
+vercel                  # run from the repo root — uses /vercel.json
 vercel --prod            # deploy to production
 ```
 
@@ -118,11 +130,11 @@ vercel --prod            # deploy to production
 
 1. Push this repository to GitHub/GitLab/Bitbucket.
 2. In the [Vercel dashboard](https://vercel.com/new), import the repo.
-3. **Important:** since this app lives in a `frontend/` subfolder (the repo
-   also has a sibling `backend/` folder), set the project's **Root
-   Directory** to `frontend` in the Vercel project settings.
-4. Framework preset should auto-detect as **Vite**; build command
-   `npm run build`, output directory `dist` (already set in `vercel.json`).
+3. Leave **Root Directory** as the repo root (default) — the root
+   `vercel.json` handles building the `frontend/` subfolder for you. Do
+   **not** point it at `backend/`.
+4. Framework preset can stay "Other" — `buildCommand` and
+   `outputDirectory` are already set explicitly in `vercel.json`.
 5. Deploy. Every push to the connected branch redeploys automatically.
 
 No environment variables are required — there's no backend or API key to
